@@ -28,6 +28,12 @@ class Hackathon
     #[ORM\Column(length: 255)]
     private ?string $theme = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $affiche = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $objectifs = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +95,30 @@ class Hackathon
     public function setTheme(string $theme): static
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getAffiche(): ?string
+    {
+        return $this->affiche;
+    }
+
+    public function setAffiche(?string $affiche): static
+    {
+        $this->affiche = $affiche;
+
+        return $this;
+    }
+
+    public function getObjectifs(): ?string
+    {
+        return $this->objectifs;
+    }
+
+    public function setObjectifs(?string $objectifs): static
+    {
+        $this->objectifs = $objectifs;
 
         return $this;
     }
