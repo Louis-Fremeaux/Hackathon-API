@@ -16,6 +16,8 @@ class OrganisateurFixtures extends Fixture
         $organisateur->setSiteWeb('www.jhon.com');
         $organisateur->setEmail("jhon@gmail.com");
 
+        $this->addReference('organisateur1', $organisateur);
+
         $manager->persist($organisateur);
         $manager->flush();
     }

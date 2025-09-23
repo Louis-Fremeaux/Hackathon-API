@@ -46,7 +46,8 @@ class HackathonController extends AbstractController
                 'ville'=>$hackathon->getVille(),
                 'theme'=>$hackathon->getTheme(),
                 'affiche'=>$hackathon->getAffiche(),
-                'objectifs'=>$hackathon->getObjectifs()
+                'objectifs'=>$hackathon->getObjectifs(),
+                'organisateurs'=>$hackathon->getOrganisateur()->getId(),
             ]);
     }
 }
