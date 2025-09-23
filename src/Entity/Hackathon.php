@@ -34,6 +34,10 @@ class Hackathon
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $objectifs = null;
 
+    #[ORM\ManyToOne(inversedBy: 'hackathons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Organisateur $organisateur = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +123,18 @@ class Hackathon
     public function setObjectifs(?string $objectifs): static
     {
         $this->objectifs = $objectifs;
+
+        return $this;
+    }
+
+    public function getOrganisateur(): ?Organisateur
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?Organisateur $organisateur): static
+    {
+        $this->organisateur = $organisateur;
 
         return $this;
     }
