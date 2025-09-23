@@ -23,7 +23,7 @@ class HackathonController extends AbstractController
         }
 
         return new Response(
-            '<html><body>Hackathon: '.$hackathon->getId().', '.$hackathon->getLieu().', '.date_format($hackathon->getDateHeureDebut(),'d/m/Y H:i:s').'</body></html>'
+            '<html lang="fr"><body>Hackathon: '.$hackathon->getId().', '.$hackathon->getLieu().', '.date_format($hackathon->getDateHeureDebut(),'d/m/Y H:i:s').'</body></html>'
         );
     }
 
