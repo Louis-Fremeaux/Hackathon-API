@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Hackathon;
 use App\Entity\Projet;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class ProjetFixtures extends Fixture
+class ProjetFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {

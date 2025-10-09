@@ -6,10 +6,11 @@ use App\Entity\Equipe;
 use App\Entity\Inscription;
 use App\Entity\Projet;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use phpDocumentor\Reflection\Types\This;
 
-class EquipeFixtures extends Fixture
+class EquipeFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -24,6 +25,8 @@ class EquipeFixtures extends Fixture
         $manager->persist($equipe);
         $manager->flush();
     }
-
-
+    public function getDependencies(): array
+    {
+        return [ProjetFixtures::class, InscriptionFixtures::class];
+    }
 }
