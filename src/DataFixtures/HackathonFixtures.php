@@ -20,6 +20,8 @@ class HackathonFixtures extends Fixture implements DependentFixtureInterface
         $hackathon->setTheme("Cyber");
         $hackathon->setOrganisateur($this->getReference('organisateur1', Organisateur::class));
 
+        $this->addReference('hackathon', $hackathon);
+
         $manager->persist($hackathon);
         $manager->flush();
     }
