@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ParticipantController extends AbstractController
+class ParticipantController extends AbstractController implements ApiController
 {
     #[Route('api/participant/{id}', name: 'participant', methods: ['GET'])]
     public function getId(EntityManagerInterface $entityManager, int $id): JsonResponse
@@ -35,7 +35,7 @@ class ParticipantController extends AbstractController
     {
         $participants = $entityManager->getRepository(Participant::class)->findAll();
         $data = array_map([$this, 'toArray'], $participants);
-        return $this->json([$data]);
+        return $this->json([$data], Response::HTTP_OK);
     }
 
     #[Route('api/participant/', name: 'participant_create', methods: ['POST'])]
