@@ -1,3 +1,4 @@
-API pour discorver by Louis.F
+API pour hackathon by Louis.F
 
-PHP / Symfony
+Symfony / PHP  
+w/ APIplatforme & JWT token
