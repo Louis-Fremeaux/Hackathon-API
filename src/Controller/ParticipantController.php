@@ -62,21 +62,21 @@ class ParticipantController extends AbstractController implements ApiController
         }
     }
 
-    #[Route('api/participant/edit/{id}', name: 'participant_update', methods: ['PUT'])]
+    #[Route('api/participant/{id}', name: 'participant_update', methods: ['PUT'])]
     public function update(EntityManagerInterface $entityManager, int $id,Request $request): JsonResponse
     {
         $participant = $entityManager->getRepository(Participant::class)->find($id);
         if(!$participant){
-            return $this->json(['message' => 'Participant not found'.$id], Response::HTTP_NOT_FOUND);
+            return $this->json(['message' => 'Participant not found for id '.$id], Response::HTTP_NOT_FOUND);
         }else{
             $data = json_decode($request->getContent(), true);
             try {
-                $participant->setNom($data['nom']);
-                $participant->setPrenom($data['prenom']);
-                $participant->setEmail($data['email']);
-                $participant->setTelephone($data['telephone']);
-                $participant->setDateNaissance(new \DateTime($data['dateNaissance']));
-                $participant->setLienPortefolio($data['lienPortefolio']);
+                isset($data['nom']) ?$participant->setNom($data['nom']) : null;
+                isset($data['prenom']) ?$participant->setPrenom($data['prenom']): null;
+                isset($data['email']) ?$participant->setEmail($data['email']): null;
+                isset($data['telephone']) ?$participant->setTelephone($data['telephone']): null;
+                isset($data['dateNaissance']) ?$participant->setDateNaissance(new \DateTime($data['dateNaissance'])): null;
+                isset($data['lienPortefolio']) ?$participant->setLienPortefolio($data['lienPortefolio']): null;
                 $entityManager->persist($participant);
                 $entityManager->flush();
                 return $this->json(['message' => 'Participant updated successfully'], Response::HTTP_OK);
@@ -86,7 +86,7 @@ class ParticipantController extends AbstractController implements ApiController
         }
     }
 
-    #[Route('api/participant/delete/{id}', name: 'participant_delete', methods: ['DELETE'])]
+    #[Route('api/participant/{id}', name: 'participant_delete', methods: ['DELETE'])]
     public function delete(EntityManagerInterface $entityManager, int $id): JsonResponse
     {
         $participants = $entityManager->getRepository(Participant::class)->findBy($id);
@@ -100,7 +100,7 @@ class ParticipantController extends AbstractController implements ApiController
 
     }
 
-    private function toArray(Participant $p): array
+    public function toArray(Participant $p): array
     {
         return [
             'id' => $p->getId(),

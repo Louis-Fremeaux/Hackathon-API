@@ -18,7 +18,7 @@ class EquipeFixtures extends Fixture implements DependentFixtureInterface
         $equipe->setNom('Equipe 1');
         $equipe->setLienPrototype('https://google.com');
         $equipe->setProjet($this->getReference('projet', Projet::class));
-        $equipe->setBeResponsable($this->getReference('inscription1', Inscription::class));
+        $equipe->setBeResponsable(null);
 
         $this->addReference('equipe1', $equipe);
 
@@ -27,6 +27,6 @@ class EquipeFixtures extends Fixture implements DependentFixtureInterface
     }
     public function getDependencies(): array
     {
-        return [ProjetFixtures::class, InscriptionFixtures::class];
+        return [ProjetFixtures::class];
     }
 }
