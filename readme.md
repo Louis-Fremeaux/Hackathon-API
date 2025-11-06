@@ -1,4 +1,4 @@
 API pour hackathon by Louis.F
 
 Symfony / PHP  
-w/ APIplatforme & JWT token
+w/ APIplatforme & JWT token & Swagger
