@@ -18,7 +18,6 @@ final class OpenApiFactoryDecorator implements OpenApiFactoryInterface
         $openApi = ($this->decorated)($context);
         $components = $openApi->getComponents() ?? new Components();
 
-        // ✅ Utilisation d’un ArrayObject, requis par API Platform
         $securitySchemes = new \ArrayObject([
             'bearerAuth' => new SecurityScheme(
                 type: 'http',
@@ -30,7 +29,6 @@ final class OpenApiFactoryDecorator implements OpenApiFactoryInterface
 
         $components = $components->withSecuritySchemes($securitySchemes);
 
-        // ✅ Définit le schéma global de sécurité
         $openApi = $openApi->withComponents($components)
             ->withSecurity([['bearerAuth' => []]]);
 

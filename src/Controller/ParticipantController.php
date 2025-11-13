@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ParticipantController extends AbstractController implements ApiController
 {
-    #[Route('api/participant/{id}', name: 'participant', methods: ['GET'])]
+   /* #[Route('api/participant/{id}', name: 'participant', methods: ['GET'])]
     public function getId(EntityManagerInterface $entityManager, int $id): JsonResponse
     {
         $participant = $entityManager->getRepository(Participant::class)->find($id);
@@ -111,5 +111,5 @@ class ParticipantController extends AbstractController implements ApiController
             'dateNaissance' => $p->getDateNaissance()?->format('Y-m-d'),
             'lienPortefolio' => $p->getLienPortefolio(),
         ];
-    }
+    }*/
 }

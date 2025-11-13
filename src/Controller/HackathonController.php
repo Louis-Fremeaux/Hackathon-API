@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HackathonController extends AbstractController
 {
-    #[Route('/api/html/hackathon/{id}', name: 'html_hackathon_id')]
+  /*  #[Route('/api/html/hackathon/{id}', name: 'html_hackathon_id')]
     public function hackathonHtmlId(EntityManagerInterface $entityManager, int $id): Response
     {
         $hackathon = $entityManager->getRepository(Hackathon::class)->find($id);
@@ -41,5 +41,5 @@ class HackathonController extends AbstractController
                 'objectifs'=>$hackathon->getObjectifs(),
                 'organisateurs'=>$hackathon->getOrganisateur()->getId(),
             ]);
-    }
+    }*/
 }
