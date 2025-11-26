@@ -2,5 +2,6 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$PROJECT_DIR$/sql/procedure_Loui.sql" value="b0a400eb-e8ad-46cd-a482-7b4f7fa6a58e" />
+    <file url="file://$PROJECT_DIR$/sql/trigger.sql" value="b0a400eb-e8ad-46cd-a482-7b4f7fa6a58e" />
   </component>
 </project>
