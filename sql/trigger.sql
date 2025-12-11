@@ -51,6 +51,15 @@ VALUES('2025-10-15 20:45:36', 'cyber', 11, 11, 25);
 
 
 -- -- -- -- -- N°4 -- -- -- -- --
+delimiter //
+drop trigger trg_responsable_in_hackathon;
+create trigger if not exists trg_responsable_in_hackathon
+    before insert on equipe for each row
+   begin
+       if not (new.be_responsable_id) then
+
+       end if;
+    end //
 -- -- -- -- -- N°4 -- -- -- -- --
 
 
@@ -85,9 +94,26 @@ values('toto','',6, null);
 
 
 -- -- -- -- -- N°7 -- -- -- -- --
+delimiter //
+drop trigger trg_email_organisateur;
+create trigger if not exists trg_email_organisateur
+    before insert on organisateur for each row
+begin
+    if not (new.email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$') then
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'email organisateur non valide';
+    end if;
+end //
+insert into organisateur(statut, nom, site_web, email)
+values('gerant','bernard','site.fr','lol.fr')
 -- -- -- -- -- N°7 -- -- -- -- --
 
 
 
 -- -- -- -- -- N°8 -- -- -- -- --
+delimiter //
+create trigger trg_delete_projet;
+before delete on projet for each row
+begin
+    if
+end//
 -- -- -- -- -- N°8 -- -- -- -- --

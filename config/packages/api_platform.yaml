@@ -5,6 +5,7 @@ api_platform:
         stateless: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
-    openapi:
-        swagger_ui_extra_configuration:
-            persistAuthorization: true
+    formats:
+        json: [ 'application/json' ]
+    error_formats:
+            json: [ 'application/json' ]
